@@ -20,7 +20,7 @@ const CATEGORIES = [
 /* CHANGE #4: Products */
 const PRODUCTS = [
  {id:1,
-    name:"Premium Lifestyle Dress",
+    name:"Drop-Shoulder - 1",
   price:850,
   image:"images/DS-1.webp",
   category:"Drop-Shoulder",
@@ -28,7 +28,7 @@ const PRODUCTS = [
   description:"A clean, comfortable piece selected for everyday elegance."},
 
  {id:2,
-    name:"Elegant Casual Dress",
+    name:"Drop-Shoulder - 2",
   price:950,
   image:"images/DS-2.webp",
   category:"Drop-Shoulder",
@@ -36,7 +36,7 @@ const PRODUCTS = [
   description:"An effortless silhouette designed for comfort and confidence."},
 
  {id:3,
-    name:"Classic Fashion Dress",
+    name:"Drop-Shoulder - 3",
   price:780,
   image:"images/DS-3.jpg",
   category:"Drop-Shoulder",
@@ -44,7 +44,7 @@ const PRODUCTS = [
   description:"Simple, versatile and easy to style."},
  
  {id:4,
-    name:"Premium Casual Shirt",
+    name:"Drop-Shoulder - 4",
   price:650,
   image:"images/DS-4.webp",
   category:"Drop-Shoulder",
@@ -60,7 +60,7 @@ const PRODUCTS = [
   description:"Minimal styling and everyday comfort."},
 
  {id:6,
-    name:"New Arrival Dress",
+    name:"New Arrival T-Shirt",
   price:1050,
   image:"images/TS-2.jpg",
   category:"New Arrivals",
@@ -68,7 +68,7 @@ const PRODUCTS = [
   description:"One of the latest pieces in the Lifestyle Wear edit."},
 
  {id:7,
-    name:"Signature Lifestyle Wear",
+    name:"Female Everyday Dress",
   price:990,
   image:"images/FD-1.jpg",
   category:"Dresses",
