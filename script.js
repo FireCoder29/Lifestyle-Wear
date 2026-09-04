@@ -24,6 +24,7 @@ const PRODUCTS = [
   price:850,
   image:"images/DS-1.webp",
   category:"Drop-Shoulder",
+  stock:0, // ⭐ ADD STOCK HERE
   badge:"You know",
   description:"A clean, comfortable piece selected for everyday elegance."},
 
@@ -32,6 +33,7 @@ const PRODUCTS = [
   price:950,
   image:"images/DS-2.webp",
   category:"Drop-Shoulder",
+  stock:10, // ⭐ ADD STOCK HERE
   badge:"NEW",
   description:"An effortless silhouette designed for comfort and confidence."},
 
@@ -40,6 +42,7 @@ const PRODUCTS = [
   price:780,
   image:"images/DS-3.jpg",
   category:"Drop-Shoulder",
+  stock:20, // ⭐ ADD STOCK HERE
   badge:"",
   description:"Simple, versatile and easy to style."},
  
@@ -48,6 +51,7 @@ const PRODUCTS = [
   price:650,
   image:"images/DS-4.webp",
   category:"Drop-Shoulder",
+  stock:15, // ⭐ ADD STOCK HERE
   badge:"POPULAR",
   description:"A refined everyday essential with a clean finish."},
 
@@ -56,6 +60,7 @@ const PRODUCTS = [
   price:450,
   image:"images/TS-1.jpg",
   category:"T-Shirts",
+  stock:25, // ⭐ ADD STOCK HERE
   badge:"",
   description:"Minimal styling and everyday comfort."},
 
@@ -64,6 +69,7 @@ const PRODUCTS = [
   price:1050,
   image:"images/TS-2.jpg",
   category:"New Arrivals",
+  stock:30, // ⭐ ADD STOCK HERE
   badge:"NEW",
   description:"One of the latest pieces in the Lifestyle Wear edit."},
 
@@ -72,6 +78,7 @@ const PRODUCTS = [
   price:990,
   image:"images/FD-1.jpg",
   category:"Dresses",
+  stock:20, // ⭐ ADD STOCK HERE
   badge:"BEST",
   description:"A standout everyday piece from our signature selection."},
 
@@ -80,6 +87,7 @@ const PRODUCTS = [
   price:720,
   image:"images/FD-2.jpg",
   category:"Dresses",
+  stock:25, // ⭐ ADD STOCK HERE
   badge:"",
   description:"Made to be worn, repeated and enjoyed."}
 ];
@@ -144,12 +152,61 @@ function renderCategoriesHome(){
 }
 
 function productCard(p){
- const card=document.createElement("article");card.className="product-card";
- card.innerHTML=`<div class="product-image">${p.badge?`<span class="product-badge">${escape(p.badge)}</span>`:""}<img src="${img(p.image)}" onerror="this.src=placeholder" alt="${escape(p.name)}"><button class="quick-view">↗</button></div><div class="product-meta"><span class="product-cat">${escape(p.category)}</span><h3>${escape(p.name)}</h3><div class="product-row"><span class="product-price">৳${money(p.price)}</span><button class="add-small">ADD +</button></div></div>`;
- card.querySelector(".product-image").onclick=e=>{if(!e.target.closest(".quick-view"))openProductDetail(p)};
- card.querySelector(".quick-view").onclick=e=>{e.stopPropagation();openProductDetail(p)};
- card.querySelector(".add-small").onclick=()=>add(p.id);
- return card;
+    const card = document.createElement("article");
+    card.className = "product-card";
+
+    const stockHTML = p.stock > 0
+        ? `<span class="stock">Stock: ${p.stock}</span>`
+        : `<span class="stock-out">STOCK OUT</span>`;
+
+    const buttonHTML = p.stock > 0
+        ? `<button class="add-small">ADD +</button>`
+        : `<button class="add-small" disabled>STOCK OUT</button>`;
+
+    card.innerHTML = `
+        <div class="product-image">
+            ${p.badge ? `<span class="product-badge">${escape(p.badge)}</span>` : ""}
+            
+            <img 
+                src="${img(p.image)}" 
+                onerror="this.src=placeholder" 
+                alt="${escape(p.name)}"
+            >
+
+            <button class="quick-view">↗</button>
+        </div>
+
+        <div class="product-meta">
+            <span class="product-cat">${escape(p.category)}</span>
+
+            <h3>${escape(p.name)}</h3>
+
+            <div class="product-row">
+                <span class="product-price">৳${money(p.price)}</span>
+                ${buttonHTML}
+            </div>
+
+            ${stockHTML}
+        </div>
+    `;
+
+    card.querySelector(".product-image").onclick = e => {
+        if(!e.target.closest(".quick-view"))
+            openProductDetail(p);
+    };
+
+    card.querySelector(".quick-view").onclick = e => {
+        e.stopPropagation();
+        openProductDetail(p);
+    };
+
+    card.querySelector(".add-small").onclick = () => {
+        if(p.stock > 0){
+            add(p.id);
+        }
+    };
+
+    return card;
 }
 
 function openProductDetail(p){

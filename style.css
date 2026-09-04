@@ -375,6 +375,27 @@ footer{background:#ebe6dc}
   display:grid;grid-template-columns:1fr 1fr;position:relative;
   animation:detailIn .28s ease
 }
+.stock {
+    color: #4f69db;
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.stock-out {
+    color: #f84040;
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.add-small:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 @keyframes detailIn{from{opacity:0;transform:translateY(15px) scale(.98)}to{opacity:1;transform:none}}
 .detail-close{
   position:absolute;right:15px;top:12px;z-index:5;border:0;background:#fff;
