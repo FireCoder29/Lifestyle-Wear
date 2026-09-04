@@ -28,7 +28,7 @@ const PRODUCTS = [
     price:550,
     image:"images/DS-1.webp",
     category:"Drop-Shoulder",
-    stock:15,
+    stock:15,   //Use this in console -> localStorage.removeItem("LW_STOCK");
     badge:"You know",
     description:"A clean, comfortable piece selected for everyday elegance."
   },
